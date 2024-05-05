@@ -22,7 +22,7 @@ class Scanner:
         return self.current >= len(self.source)
 
     def scan_token(self):
-        c = self.advance()
+        char = self.advance()
         hashmap = {
             "(": lambda: self.add_token(TokenType.LEFT_PAREN),
             ")": lambda: self.add_token(TokenType.RIGHT_PAREN),
@@ -50,21 +50,21 @@ class Scanner:
             # "'": lambda: self.add_string(),
         }
         try:
-            hashmap[c]()
+            hashmap[char]()
         except KeyError:
             pass
-        if c == "/":
+        if char == "/":
             if self.match("/"):
                 while self.peek() != "\n" and not self.is_at_end():
                     self.advance()
                 else:
                     self.add_token(TokenType.SLASH)
-        elif c in [" ", "\r", "\t"]:
+        elif char in [" ", "\r", "\t"]:
             pass
-        elif c == "\n":
+        elif char == "\n":
             self.line += 1
         else:
-            Lox().error(self.line, f"Unexpected character: {c}")
+            Lox().error(self.line, f"Unexpected character: {char}")
 
     def match(self, expected: str):
         if self.is_at_end():

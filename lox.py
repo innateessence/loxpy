@@ -1,3 +1,4 @@
+# https://craftinginterpreters.com/
 # https://github.com/TodePond/DreamBerd
 
 """
@@ -8,12 +9,13 @@ TODO:
 
 from .token import TokenType, Token
 from .scanner import Scanner
+from .expressions import BinaryExpr
 
 
 class Lox:
     def __init__(self):
         self.has_error = False
-        # self.scanner = Scanner(self)
+        # self.scanner = Scanner()
 
     def report(self, line: int, where: str, message: str):
         print(f"[line {line}] Error {where}: {message}")
