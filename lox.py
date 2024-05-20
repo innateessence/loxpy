@@ -5,6 +5,7 @@
 TODO:
     [] - I want statement termination to be handled syntactically the way Python does it. (I think. This comes at the cost of in-line functions MUST be 1 line)
     [] - I want the pipe operator |> to be native to the language. I think I want this to handle return values being passed from one function as arguments to another.
+    [] - I want to include variable state. namely the concept of a `taint`ed variable (Perl)
 """
 
 from .token import TokenType, Token
